@@ -1,0 +1,1 @@
+This repository includes the code for individual gray-white matter contrast (GWC) extraction, resampling and surface-based functional connectivity (FC) analyses between individuals with low- and high-impulsivity scores
