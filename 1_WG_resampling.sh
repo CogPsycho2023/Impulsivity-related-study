@@ -35,6 +35,16 @@ for subject in $(cat "${subj}"); do
   for hem in lh rh; do
     echo "  Hemisphere: ${hem}"
 
+        #surface-resample preparation#
+    wb_shortcuts -freesurfer-resample-prep \
+      ${T1}/${subject}/surf/${hem}.white \
+      ${T1}/${subject}/surf/${hem}.pial \
+      ${T1}/${subject}/surf/${hem}.sphere.reg \
+      ${atlas}/fs_LR-deformed_to-fsaverage.${hem}.sphere.164k_fs_LR.surf.gii \
+      ${RawSurf}/${subject}.${hem}.midthickness.surf.gii \
+      ${Surf164}/${subject}.${hem}.midthickness.164k.surf.gii \
+      ${RawSurf}/${subject}.${hem}.sphere.reg.surf.gii
+
     # Surface resampling: fs_LR 164k -> 32k
     wb_command -surface-resample \
       "${Surf164}/${subject}.${hem}.midthickness.164k.surf.gii" \
